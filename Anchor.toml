@@ -9,7 +9,7 @@ hello_solana = "F1ipperKF9EfD821ZbbYjS319LXYiBmjhzkkf5a26rC"
 
 [registry]
 url = "https://api.apr.dev"
-
+# Localnet Devnet
 [provider]
 cluster = "Localnet"
 wallet = '/Users/ethan/.config/solana/id.json'
