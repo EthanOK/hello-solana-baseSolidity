@@ -2,11 +2,15 @@
 contract hello_solana {
     bool private value = true;
 
+    address private owner;
+
     @payer(payer)
-    constructor() {
+    constructor(address payer) {
         print("Hello, World!");
 
         print("Solidity for Solana!");
+
+        owner = payer;
     }
 
     /// A message that can be called on instantiated contracts.
@@ -19,5 +23,9 @@ contract hello_solana {
     /// Simply returns the current value of our `bool`.
     function get() public view returns (bool) {
         return value;
+    }
+
+    function getOwner() public view returns (address) {
+        return owner;
     }
 }

@@ -13,9 +13,12 @@ describe("hello-solana", () => {
   const program = anchor.workspace.HelloSolana as Program<HelloSolana>;
 
   it("Is initialized!", async () => {
+
+    console.log("pay",dataAccount.publicKey.toString());
+    
     // Add your test here.
     const tx = await program.methods
-      .new()
+      .new(dataAccount.publicKey)
       .accounts({ dataAccount: dataAccount.publicKey })
       .signers([dataAccount])
       .rpc();
@@ -38,5 +41,12 @@ describe("hello-solana", () => {
       .accounts({ dataAccount: dataAccount.publicKey })
       .view();
 
-    console.log("state", val2);  });
+    console.log("state", val2);
+
+    const owner = await program.methods
+      .getOwner()
+      .accounts({ dataAccount: dataAccount.publicKey })
+      .view();
+    console.log("owner", owner.toString());
+  });
 });
